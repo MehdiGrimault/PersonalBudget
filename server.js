@@ -26,9 +26,9 @@ envelopeRouter.get('', async (req,res,next) => {
 //CREATE A NEW ENVELOP AND ADD IT TO THE DATABASE
 envelopeRouter.post('', async (req,res,next) => {
     try {
-        let {title, budget} = req.body;
+        let {title, budget} = await req.body;
         let envelope = new Envelope(title,budget);
-        envelope = await envelope.save();
+        await envelope.save();
         res.status(200).json({message: "envelope created"});
     }
     catch (error) {
@@ -79,10 +79,10 @@ envelopeRouter.delete('/:id', async (req,res,next) => {
 })
 
 //TRANSFER MONEY FROM AN ENVELOP TO ANOTHER
-envelopeRouter.put('/:id1/:id2', async (req, res, next) => {
+envelopeRouter.put('/:id1/:id2/:amount', async (req, res, next) => {
     try {
-        let {id1, id2} = req.params;
-        let envelope = await Envelope.transfer(id1,id2,500);
+        let {id1, id2, amount} = req.params;
+        let envelope = await Envelope.transfer(id1,id2,amount);
         res.status(200).json({message: "transfer done", envelope: envelope[0]});
     }
     catch (error) {

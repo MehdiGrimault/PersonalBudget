@@ -1,1 +1,5 @@
 GET http://localhost:5500/envelopes
+
+GET http://localhost:5500/envelopes/1
+
+POST http://localhost:5500/envelopes

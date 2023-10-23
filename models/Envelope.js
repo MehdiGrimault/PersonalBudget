@@ -6,7 +6,7 @@ class Envelope {
         this.budget = budget;
     }
 
-    save() {
+    async save() {
         let sql = `
         INSERT INTO envelopes(
             title,
@@ -18,17 +18,17 @@ class Envelope {
         )
         `;
 
-        return db.execute(sql);
+        return await db.execute(sql);
     }
 
-    static findAll() {
+    static async findAll() {
         let sql = `SELECT * FROM envelopes;`;
-        return db.execute(sql);
+        return await db.execute(sql);
     }
 
-    static findById(id) {
+    static async findById(id) {
         let sql = `SELECT * FROM envelopes WHERE id = ${id};`;
-        return db.execute(sql);
+        return await db.execute(sql);
     }
 
     static async update (id,title,budget) {
@@ -48,14 +48,14 @@ class Envelope {
         DELETE FROM envelopes
         WHERE id = ${id};
         `;
-        return db.execute(sql);
+        return await db.execute(sql);
     }
 
     static async transfer (id1,id2, amount) {
         let envelope1 = await Envelope.findById(id1);
         let envelope2 = await Envelope.findById(id2);
-        await Envelope.update(id1,envelope1[0][0].title,envelope1[0][0].budget-amount);
-        await Envelope.update(id2,envelope2[0][0].title,envelope1[0][0].budget+amount);
+        await Envelope.update(id1,envelope1[0][0].title,Number(envelope1[0][0].budget)-Number(amount));
+        await Envelope.update(id2,envelope2[0][0].title,Number(envelope2[0][0].budget)+Number(amount));
         let sql = `SELECT * FROM envelopes;`;
         return await db.execute(sql);
     }
