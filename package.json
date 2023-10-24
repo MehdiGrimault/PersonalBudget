@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "start": "concurrently \"node server/server.js\" \"cd client && PORT=4000 npm start\""
+  }
+}
