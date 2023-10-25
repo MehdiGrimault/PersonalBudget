@@ -32,6 +32,6 @@ export default function Envelope({ expense, budget, gray }) {
 function getProgressBarVariant(expense,budget) {
     const ratio = expense / budget;
     if (ratio < 0.5) return "primary";
-    if (ratio < 0.75) return "warning";
+    if (ratio < 0.85) return "warning";
     return "danger";
 }
