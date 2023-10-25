@@ -1,7 +1,8 @@
 import { Button, Stack, Container } from "react-bootstrap";
 import Envelope from "./components/Envelope.js";
 import { useEffect, useState } from "react";
-import NewEnvelope from "./components/NewEnvelope.js"
+import NewEnvelope from "./components/NewEnvelope.js";
+import TotalBudget from "./components/TotalBudget.js";
 
 function App() {
   const [envelopes, setEnvelopes] = useState([]);
@@ -12,7 +13,7 @@ function App() {
         return response.json();
       })
       .then(result => {
-        setEnvelopes(result.envelopes)
+        setEnvelopes(result.envelopes);
       });
   })
 
@@ -29,8 +30,11 @@ function App() {
         alignItems: "flex-start"
       }}>
         {envelopes.map(envelope => (
-          <Envelope key={envelope.id} title={envelope.title} expense={0} budget={envelope.budget} gray />
+          <Envelope id={envelope.id} title={envelope.title} expense={0} budget={envelope.budget} gray />
         ))}
+      </div>
+      <div className="my-4">
+        <TotalBudget title={"Total"} expense={envelopes.reduce((acc, item) => acc + item.budget, 0)} budget={5200} gray />
       </div>
     </Container>
   );
