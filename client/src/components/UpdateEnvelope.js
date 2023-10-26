@@ -40,7 +40,7 @@ function UpdateEnvelope( {id} ) {
     //affichage
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>Update Envelope</Button>
+            <Button variant="outline-primary" onClick={handleShow}>Update Envelope</Button>
             <Modal show={show} onHide={handleClose}>
                 <Form onSubmit={handleSubmit}>
                     <Modal.Header closeButton>
