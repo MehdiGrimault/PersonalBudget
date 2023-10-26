@@ -1,4 +1,5 @@
 const Envelope = require('./models/Envelope');
+const Expense = require('./models/Expense');
 const express = require('express');
 const envelopeRouter = express.Router();
 
@@ -35,6 +36,19 @@ envelopeRouter.get('/:id', async (req,res,next) => {
         let id = req.params.id;
         let envelope = await Envelope.findById(id);
         res.status(200).json({envelope: envelope[0]});
+    }
+    catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+//GET ALL THE EXPENSES FOR A SPECIFIC ENVELOP ID
+envelopeRouter.get('/:id/expenses', async (req,res,next) => {
+    try {
+        let envelopeId = req.params.id;
+        let expenses = await Expense.getExpensesbyEnvelopeId(envelopeId)
+        res.status(200).json({expenses: expenses[0]});
     }
     catch (error) {
         console.log(error);

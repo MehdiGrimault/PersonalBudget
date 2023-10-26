@@ -1,7 +1,8 @@
 import { Card, ProgressBar, Stack } from "react-bootstrap";
 import { currencyFormatter } from "../utils";
 import UpdateEnvelope from "./UpdateEnvelope.js";
-import DeleteEnvelope from "./DeleteEnvelope.js"
+import DeleteEnvelope from "./DeleteEnvelope.js";
+import AddExpense from "./AddExpense.js";
 
 export default function Envelope({ id, title, expense, budget, gray }) {
     const classNames = [];
@@ -13,7 +14,7 @@ export default function Envelope({ id, title, expense, budget, gray }) {
     }
     return (
         <Card className={classNames.join(" ")}>
-            <Card.Body>
+            <Card.Body className="p-3">
                 <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
                     <div className="me-2">{title}</div>
                     <div className="d-flex align-items-baseline">{currencyFormatter.format(expense)}
@@ -24,8 +25,9 @@ export default function Envelope({ id, title, expense, budget, gray }) {
                 </Card.Title>
                 <ProgressBar className="rounded-pill" variant={getProgressBarVariant(expense,budget)} min={0} max={budget} now={expense}></ProgressBar>
                 <Stack direction="horizontal" gap="2" className="mt-4">
-                    <DeleteEnvelope id={id}/>
-                    <UpdateEnvelope id={id}/>
+                    <AddExpense id={id} className="ms-auto"/>
+                    <DeleteEnvelope id={id} className="ms-auto"/>
+                    <UpdateEnvelope id={id} className="ms-auto"/>
                 </Stack>
             </Card.Body>
         </Card>

@@ -17,8 +17,8 @@ expenseRouter.get('', async (req,res,next) => {
 //CREATE A NEW EXPENSE AND ADD IT TO THE DATABASE
 expenseRouter.post('', async (req,res,next) => {
     try {
-        let {title, amount, budgetId} = await req.body;
-        let expense = new Expense(title,amount,budgetId);
+        let {title, amount, envelopeId} = await req.body;
+        let expense = new Expense(title,amount,envelopeId);
         await expense.save();
         res.status(200).json({message: "expense created"});
     }

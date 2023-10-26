@@ -21,7 +21,7 @@ function DeleteEnvelope( {id} ) {
     //affichage
     return (
         <>
-            <Button variant="outline-primary ms-auto" onClick={handleSubmit}>Delete</Button>
+            <Button variant="outline-primary" onClick={handleSubmit}>Delete Envelope</Button>
         </>
     );
 }

@@ -4,11 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useRef } from 'react';
 
-function UpdateEnvelope( {id} ) {
+function AddExpense({ id }) {
     //State
     const [show, setShow] = useState(false);
     const titleRef = useRef();
-    const budgetRef = useRef();
+    const amountRef = useRef();
 
     //comportements
     const handleClose = () => setShow(false);
@@ -21,17 +21,18 @@ function UpdateEnvelope( {id} ) {
 
         let raw = JSON.stringify({
             "title": titleRef.current.value,
-            "budget": Number(budgetRef.current.value)
+            "amount": Number(amountRef.current.value),
+            "envelopeId": Number(id)
         });
 
         let requestOptions = {
-            method: 'PUT',
+            method: 'POST',
             headers: myHeaders,
             body: raw,
             redirect: 'follow'
         };
 
-        await fetch(`http://localhost:5500/envelopes/${id}`, requestOptions)
+        await fetch(`http://localhost:5500/expenses/`, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -40,11 +41,11 @@ function UpdateEnvelope( {id} ) {
     //affichage
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>Update Envelope</Button>
+            <Button variant="outline-primary" onClick={handleShow}>Add Expense</Button>
             <Modal show={show} onHide={handleClose}>
                 <Form onSubmit={handleSubmit}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Update the envelope</Modal.Title>
+                        <Modal.Title>Add an expense</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group className="mb-3" controlId="title">
@@ -52,25 +53,24 @@ function UpdateEnvelope( {id} ) {
                             <Form.Control
                                 ref={titleRef}
                                 type="text"
-                                placeholder="ex: energy"
                                 autoFocus
                                 required
                             />
                         </Form.Group>
                         <Form.Group
                             className="mb-3"
-                            controlId="budget"
+                            controlId="amount"
                         >
-                            <Form.Label>Budget</Form.Label>
-                            <Form.Control ref={budgetRef} type="number" min={0} required />
+                            <Form.Label>Amount</Form.Label>
+                            <Form.Control ref={amountRef} type="number" min={0} required />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" type="submit" onClick={handleClose}>
-                            Update envelope
+                        <Button variant="primary"  type="submit" onClick={handleClose}>
+                            Add Expense
                         </Button>
                     </Modal.Footer>
                 </Form>
@@ -79,4 +79,4 @@ function UpdateEnvelope( {id} ) {
     );
 }
 
-export default UpdateEnvelope;
+export default AddExpense;

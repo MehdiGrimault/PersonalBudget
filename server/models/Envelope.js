@@ -21,6 +21,7 @@ class Envelope {
         return await db.execute(sql);
     }
 
+
     static async findAll() {
         let sql = `SELECT * FROM envelopes;`;
         return await db.execute(sql);

@@ -1,10 +1,10 @@
 const db = require('../config/db');
 
 class Expense {
-    constructor (title, amount, budgetId) {
+    constructor (title, amount, envelopeId) {
         this.title = title;
         this.amount = amount;
-        this.budgetId = budgetId;
+        this.envelopeId = envelopeId;
     }
 
     async save() {
@@ -12,15 +12,20 @@ class Expense {
         INSERT INTO expenses(
             title,
             amount,
-            budgetId
+            envelopeId
         )
         VALUES(
             '${this.title}',
             '${this.amount}',
-            '${this.budgetId}'
+            '${this.envelopeId}'
         )
         `;
 
+        return await db.execute(sql);
+    }
+
+    static async getExpensesbyEnvelopeId(envelopeId) {
+        let sql = `SELECT * FROM expenses WHERE envelopeId = ${envelopeId};`;
         return await db.execute(sql);
     }
 
