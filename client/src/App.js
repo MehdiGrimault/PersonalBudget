@@ -9,7 +9,6 @@ function App() {
   const [envelopes, setEnvelopes] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
-  useEffect(() => {
     fetch("http://localhost:5500/envelopes")
       .then(response => {
         return response.json();
@@ -17,22 +16,27 @@ function App() {
       .then(result => {
         setEnvelopes(result.envelopes);
       });
-  });
+
 
   useEffect(() => {
-    envelopes.forEach(envelope => {
-      fetch(`http://localhost:5500/envelopes/${envelope.id}/expenses`)
-        .then(response => response.json())
-        .then(result => {
-          setExpenses(prevExpenses => [...prevExpenses, { envelopeId: envelope.id, amount: Number(result.expenses.reduce((acc, item) => acc + item.amount, 0)) }]);
-        })
-        .catch(error => {
+    const fetchExpenses = async () => {
+      const updatedExpenses = [];
+      for (const envelope of envelopes) {
+        try {
+          const response = await fetch(`http://localhost:5500/envelopes/${envelope.id}/expenses`);
+          const result = await response.json();
+          const totalAmount = Number(result.expenses.reduce((acc, item) => acc + item.amount, 0));
+          updatedExpenses.push({ envelopeId: envelope.id, amount: totalAmount });
+        } catch (error) {
           console.error(`Error fetching expenses for envelope ${envelope.id}:`, error);
-          setExpenses(prevExpenses => [...prevExpenses, { envelopeId: envelope.id, amount: 0 }]);
-        });
-    });
-  }, [envelopes]); // Include envelopes in the dependency array to run this effect whenever envelopes change
-
+          updatedExpenses.push({ envelopeId: envelope.id, amount: 0 });
+        }
+      }
+      setExpenses(updatedExpenses);
+    };
+  
+    fetchExpenses();
+  }, [envelopes]); 
 
   return (
     <Container className="my-4">
@@ -51,8 +55,8 @@ function App() {
         gap: "1rem",
         alignItems: "flex-start"
       }}>
-        {envelopes.map(envelope => {
-          const expenseData = expenses.find(expense => expense.envelopeId === envelope.id);
+        {envelopes.map( (envelope) => {
+          const expenseData =  expenses.find(expense => expense.envelopeId === envelope.id);
           const amount = expenseData ? expenseData.amount : 0;
 
           return (

@@ -32,10 +32,12 @@ function AddExpense({ id }) {
             redirect: 'follow'
         };
 
-        await fetch(`http://localhost:5500/expenses/`, requestOptions)
+        fetch(`http://localhost:5500/expenses/`, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
+            
+        handleClose();
     }
 
     //affichage
@@ -69,7 +71,7 @@ function AddExpense({ id }) {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary"  type="submit" onClick={handleClose}>
+                        <Button variant="primary"  type="submit" onClick={handleSubmit}>
                             Add Expense
                         </Button>
                     </Modal.Footer>
