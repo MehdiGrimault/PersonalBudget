@@ -1,7 +1,7 @@
 # PersonalBudget
 
-In this project, I created my first API using Node.JS, express, and mySQL.
+In this project, I created my first full stack app.
 
-The API allows a user to manage his personal budget by creating, updating and deleting envelopes.
-
-The next step is to create a front end, work in progress...
+The stack is :
+- backend : Node.JS, express, mySQL
+- frontend: React
