@@ -1,4 +1,4 @@
-#PersonalBudget
+PersonalBudget
 PersonalBudget is a budget management application that allows users to efficiently organize their finances by creating envelopes and tracking expenses.
 
 Table of Contents
@@ -7,6 +7,7 @@ Features
 Tech Stack
 Installation
 Usage
+
 Introduction
 Managing personal finances can be a challenging task. PersonalBudget aims to simplify this process by providing a user-friendly interface for creating envelopes and tracking expenses. Envelopes act as virtual containers for budget categories, helping users allocate funds and monitor their spending.
 
@@ -14,11 +15,11 @@ Features
 Envelopes: Create personalized envelopes for different budget categories such as groceries, entertainment, and more.
 Expenses: Log and categorize your expenses under respective envelopes to keep a detailed record.
 Dashboard: Get an overview of your budget with a comprehensive dashboard that displays spending patterns and remaining balances.
+
 Tech Stack
 The project is built using the following technologies:
 
 Backend:
-
 Node.js
 Express
 MySQL
@@ -27,7 +28,6 @@ Frontend:
 React
 
 Installation
-
 To run PersonalBudget locally, follow these steps:
 
 Clone the repository:
