@@ -64,8 +64,11 @@ Access the application at http://localhost:4000 in your web browser.
 
 # Usage
 Open the application in your web browser.
-Create envelopes for different budget categories.
-Log your expenses under the respective envelopes.
-Monitor your spending patterns and remaining balances on the dashboard.
 
-Feel free to customize the sections based on your project's specific details and add more information as needed.
+Set your total budget.
+
+Create envelopes for different budget categories.
+
+Log your expenses under the respective envelopes.
+
+Monitor your spending patterns and remaining balances on the dashboard.
