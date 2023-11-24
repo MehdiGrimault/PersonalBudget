@@ -6,7 +6,9 @@ Managing personal finances can be a challenging task. PersonalBudget aims to sim
 
 # Features
 Envelopes: Create personalized envelopes for different budget categories such as groceries, entertainment, and more.
+
 Expenses: Log and categorize your expenses under respective envelopes to keep a detailed record.
+
 Dashboard: Get an overview of your budget with a comprehensive dashboard that displays spending patterns and remaining balances.
 
 # Tech Stack
