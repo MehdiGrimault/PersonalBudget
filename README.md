@@ -32,6 +32,7 @@ git clone https://github.com/MehdiGrimault/PersonalBudget.git
 cd PersonalBudget
 
 - Create .env in server folder and copy the following lines :
+
 NODE_ENV=development
 
 PORT=5500
