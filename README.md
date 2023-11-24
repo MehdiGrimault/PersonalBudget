@@ -1,13 +1,6 @@
 # PersonalBudget
 PersonalBudget is a budget management application that allows users to efficiently organize their finances by creating envelopes and tracking expenses.
 
-# Table of Contents
-Introduction
-Features
-Tech Stack
-Installation
-Usage
-
 # Introduction
 Managing personal finances can be a challenging task. PersonalBudget aims to simplify this process by providing a user-friendly interface for creating envelopes and tracking expenses. Envelopes act as virtual containers for budget categories, helping users allocate funds and monitor their spending.
 
