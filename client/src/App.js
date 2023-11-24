@@ -9,13 +9,13 @@ function App() {
   const [envelopes, setEnvelopes] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
-    fetch("http://localhost:5500/envelopes")
-      .then(response => {
-        return response.json();
-      })
-      .then(result => {
-        setEnvelopes(result.envelopes);
-      });
+  fetch("http://localhost:5500/envelopes")
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      setEnvelopes(result.envelopes);
+    });
 
 
   useEffect(() => {
@@ -34,9 +34,9 @@ function App() {
       }
       setExpenses(updatedExpenses);
     };
-  
+
     fetchExpenses();
-  }, [envelopes]); 
+  }, [envelopes]);
 
   return (
     <Container className="my-4">
@@ -55,8 +55,8 @@ function App() {
         gap: "1rem",
         alignItems: "flex-start"
       }}>
-        {envelopes.map( (envelope) => {
-          const expenseData =  expenses.find(expense => expense.envelopeId === envelope.id);
+        {envelopes.map((envelope) => {
+          const expenseData = expenses.find(expense => expense.envelopeId === envelope.id);
           const amount = expenseData ? expenseData.amount : 0;
 
           return (
