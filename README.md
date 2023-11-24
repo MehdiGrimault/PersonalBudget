@@ -1,19 +1,14 @@
 # PersonalBudget
 PersonalBudget is a budget management application that allows users to efficiently organize their finances by creating envelopes and tracking expenses.
 
-# Table of Contents
-Introduction
-Features
-Tech Stack
-Installation
-Usage
-
 # Introduction
 Managing personal finances can be a challenging task. PersonalBudget aims to simplify this process by providing a user-friendly interface for creating envelopes and tracking expenses. Envelopes act as virtual containers for budget categories, helping users allocate funds and monitor their spending.
 
 # Features
 Envelopes: Create personalized envelopes for different budget categories such as groceries, entertainment, and more.
+
 Expenses: Log and categorize your expenses under respective envelopes to keep a detailed record.
+
 Dashboard: Get an overview of your budget with a comprehensive dashboard that displays spending patterns and remaining balances.
 
 # Tech Stack
@@ -32,28 +27,36 @@ To run PersonalBudget locally, follow these steps:
 
 - Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/MehdiGrimault/PersonalBudget.git
+
 cd PersonalBudget
+
+- Create .env in server folder and copy the following lines :
+NODE_ENV=development
+
+PORT=5500
+
+DB_HOST=localhost
+
+DB_USER=root
+
+DB_NAME=budget
+
+DB_PASSWORD=
 
 - Install dependencies:
 
-bash
-Copy code
-Install backend dependencies
-cd backend
+cd server
+
 npm install
 
-Install frontend dependencies
-bash
-Copy code
-cd ../frontend
+cd ../client
+
 npm install
 
 - Set up the database:
-Create a MySQL database and configure the connection in the backend/config/database.js file.
-Run the application:
+
+Create a MySQL database and configure the connection in the backend/config/database.js file
 
 bash
 Copy code
