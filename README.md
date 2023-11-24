@@ -27,23 +27,32 @@ To run PersonalBudget locally, follow these steps:
 
 - Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/MehdiGrimault/PersonalBudget.git
+
 cd PersonalBudget
+
+- Create .env in server folder and copy the following lines :
+
+# NODE APP ENVIRONMENT VARIABLES
+NODE_ENV=development
+PORT=5500
+
+# DATABASE CONNECTION ENVIRONMENT VARIABLES
+DB_HOST=localhost
+DB_USER=root
+DB_NAME=budget
+DB_PASSWORD=
 
 - Install dependencies:
 
-bash
-Copy code
 Install backend dependencies
-cd backend
+cd server
+
 npm install
 
 Install frontend dependencies
-bash
-Copy code
-cd ../frontend
+cd ../client
+
 npm install
 
 - Set up the database:
