@@ -46,19 +46,17 @@ DB_PASSWORD=
 
 - Install dependencies:
 
-Install backend dependencies
 cd server
 
 npm install
 
-Install frontend dependencies
 cd ../client
 
 npm install
 
 - Set up the database:
-Create a MySQL database and configure the connection in the backend/config/database.js file.
-Run the application:
+
+Create a MySQL database and configure the connection in the backend/config/database.js file
 
 bash
 Copy code
