@@ -58,8 +58,6 @@ npm install
 
 Create a MySQL database and configure the connection in the backend/config/database.js file
 
-bash
-Copy code
 # Start the server
 npm start
 
